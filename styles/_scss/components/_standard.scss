@@ -1,0 +1,34 @@
+
+.hide-icon {
+  text-indent:-9999em !important;
+  display:none !important;
+}
+
+.back-to-top {
+  position: fixed !important;
+  bottom: 2em !important;
+  right: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  background: $color-grey ;
+  background: $color-grey ; /* Old browsers */ 
+  font-size: 12px;
+  padding: 1.5em;
+  z-index: 3000;
+  display: none;
+    @include respond-to(small){
+        display: none!important;
+    }
+}
+.back-to-top:hover {
+	opacity: 0.5;
+}
+
+.btn-nav{
+    cursor: pointer;
+}
+
+
+
+ 
