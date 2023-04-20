@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php include 'head.phtml'; ?>
+        <?php include 'layout/head.phtml'; ?>
     </head>
 
     <body>
 
     <header>
-            <?php include 'header.phtml'; ?>
+            <?php include 'layout/header.phtml'; ?>
     </header>
 
     <main>
@@ -21,7 +21,7 @@
     </main>
 
     <footer>
-        <?php include 'footer.phtml'; ?>
+        <?php include 'layout/footer.phtml'; ?>
     </footer>
 
     <script type="text/javascript" src="scripts/main.js"></script>
