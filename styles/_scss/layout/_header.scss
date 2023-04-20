@@ -1,3 +1,32 @@
 header{
+    background-image: url(/images/banner-bg.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 50px 0;
+    .logo{
+        text-align: center;
+        margin-bottom: 100px;
+        h1{
+            color: $color-white;
+            text-transform: uppercase;
+        }
+    }
+    .icons-container{
+        text-align: center;
+        color: $color-white;
+        cursor: default;
+        &:hover h2, &:hover i{
+            color: $color-orange;
+        }
+        h2{
+            font-size: 30px;
+            transition: all 0.4s ease-in-out;
+        }
+        i{
+            font-size: 3em;
+            transition: all 0.4s ease-in-out;
+        }
+    }
     
 }
