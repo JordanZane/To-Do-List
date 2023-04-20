@@ -3,42 +3,13 @@
 
 
 @font-face {
-    font-family: 'cerebri_sans_proregular';
-    src: url('cerebrisanspro-regular.eot');
-    src: url('cerebrisanspro-regular.eot?#iefix') format('embedded-opentype'),
-         url('cerebrisanspro-regular.woff2') format('woff2'),
-         url('cerebrisanspro-regular.woff') format('woff'),
-         url('cerebrisanspro-regular.svg#cerebri_sans_proregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'cerebri_sans_pro_boldbold';
-    src: url('cerebrisanspro-bold.eot');
-    src: url('cerebrisanspro-bold.eot?#iefix') format('embedded-opentype'),
-         url('cerebrisanspro-bold.woff2') format('woff2'),
-         url('cerebrisanspro-bold.woff') format('woff'),
-         url('cerebrisanspro-bold.svg#cerebri_sans_pro_boldbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'cerebri_sans_pro_italicitalic';
-    src: url('cerebrisanspro-italic.eot');
-    src: url('cerebrisanspro-italic.eot?#iefix') format('embedded-opentype'),
-         url('cerebrisanspro-italic.woff2') format('woff2'),
-         url('cerebrisanspro-italic.woff') format('woff'),
-         url('cerebrisanspro-italic.svg#cerebri_sans_pro_italicitalic') format('svg');
+    font-family: 'manchegoblack';
+    src: url('manchego_black.eot');
+    src: url('manchego_black.eot?#iefix') format('embedded-opentype'),
+         url('manchego_black.woff2') format('woff2'),
+         url('manchego_black.woff') format('woff'),
+         url('manchego_black.ttf') format('truetype'),
+         url('manchego_black.svg#manchegoblack') format('svg');
     font-weight: normal;
     font-style: normal;
 
