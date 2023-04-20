@@ -7,45 +7,52 @@
   url("fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); 
 }
 
-$font1 :'Verdana';
-$font2 :'Verdana';
+$font1 :'Cerebri';
+$font2 :'Manchego';
 
 @font-face {
-  font-family: "Flaticon";
-  src: url("/public/font/icons/Flaticon.eot");
-  src: url("/public/font/icons/Flaticon.eot?#iefix") format("embedded-opentype"),
-       url("/public/font/icons/Flaticon.woff") format("woff"),
-       url("/public/font/icons/Flaticon.ttf") format("truetype"),
-       url("/public/font/icons/Flaticon.svg#Flaticon") format("svg");
+  font-family: "Cerebri";
+  src: url("/styles/fonts/cerebrisanspro-regular.eot");
+  src: url("/styles/fonts/cerebrisanspro-regular.eot?#iefix") format("embedded-opentype"),
+       url("/styles/fonts/cerebrisanspro-regular.woff") format("woff"),
+       url("/styles/fonts/cerebrisanspro-regular.ttf") format("truetype"),
+       url("/styles/fonts/cerebrisanspro-regular.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: "Flaticon";
-    src: url("/public/font/icons/Flaticon.svg#Flaticon") format("svg");
-  }
+@font-face {
+  font-family: "Cerebri";
+  src: url("/styles/fonts/cerebrisanspro-bold.eot");
+  src: url("/styles/fonts/cerebrisanspro-bold.eot?#iefix") format("embedded-opentype"),
+       url("/styles/fonts/cerebrisanspro-bold.woff") format("woff"),
+       url("/styles/fonts/cerebrisanspro-bold.ttf") format("truetype"),
+       url("/styles/fonts/cerebrisanspro-bold.svg#Flaticon") format("svg");
+  font-weight: bold;
+  font-style: normal;
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
-  font-family: Flaticon;
-
-font-style: normal;
-
+@font-face {
+  font-family: "Cerebri";
+  src: url("/styles/fonts/cerebrisanspro-italic.eot");
+  src: url("/styles/fonts/cerebrisanspro-italic.eot?#iefix") format("embedded-opentype"),
+       url("/styles/fonts/cerebrisanspro-italic.woff") format("woff"),
+       url("/styles/fonts/cerebrisanspro-italic.ttf") format("truetype"),
+       url("/styles/fonts/cerebrisanspro-italic.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: italic;
 }
 
-
-
-.flaticon-right-arrow:before { content: "\f100"; }
-.flaticon-left-arrow:before { content: "\f101"; }
-.flaticon-black-back-closed-envelope-shape:before { content: "\f102"; }
-.flaticon-maps-and-flags:before { content: "\f103"; }
-.flaticon-phone-receiver:before { content: "\f104"; }
-.flaticon-pdf-file-format-symbol:before { content: "\f105"; }
-.flaticon-menu:before { content: "\f106"; }
-.flaticon-facebook-logo:before { content: "\f107"; }
+@font-face {
+  font-family: "Manchega";
+  src: url("/styles/fonts/manchego_black.eot");
+  src: url("/styles/fonts/manchego_black.eot?#iefix") format("embedded-opentype"),
+       url("/styles/fonts/manchego_black.woff") format("woff"),
+       url("/styles/fonts/manchego_black.ttf") format("truetype"),
+       url("/styles/fonts/manchego_black.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 
