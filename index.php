@@ -22,11 +22,29 @@
                         </div>
                     </form>
                     <div id="lists-container">
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-9">
+                    <div class="row">
+                        <!--Add list name h3-->
+                        <h4>En cours</h4>
+                        <div id="tasks-container">
 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="new-task-container">
+                            <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
+                            <input class="btn-style" type="submit" id="new-task-submit" value="+" title="Ajouter">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>Terminées</h4>
+                        <div class="completed-tasks">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
