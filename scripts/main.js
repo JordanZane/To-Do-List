@@ -14,10 +14,18 @@ newListForm.addEventListener("submit", function(e){
         alert('Veuillez remplir le champs');
     }else{
         newListInput.value = "";
+        
+        let newListContainer = document.createElement("div");
+        newListContainer.classList.add("list");
+        let listIcon = document.createElement("i")
+        listIcon.classList.add("fa-solid", "fa-bars");
+        let listName = document.createElement("input");
+        listName.classList.add("list-name");
+        listName.value = newListName;
+        listName.textContent = newListName.value;
+        
+        lists.appendChild(newListContainer);
+        newListContainer.appendChild(listIcon);
+        newListContainer.appendChild(listName);
     }
-
-    let newListContainer = document.createElement("div");
-    newListContainer.classList.add("list");
-    
-    lists.appendChild(newListContainer);
 })
