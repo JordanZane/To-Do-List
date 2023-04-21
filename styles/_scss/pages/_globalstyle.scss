@@ -61,7 +61,7 @@ body {
 
         h3 {
                 font-family: $font1;
-                font-size: 25px;
+                font-size: 28px;
                 font-weight: 700;
                 line-height: 28px;
                 padding: 25px 0 18px;
@@ -135,6 +135,19 @@ body {
         a {
 
         }
+}
+
+.btn-style{
+        color: $color-green;
+        font-size: 32px;
+        border: none;
+        background: none;
+}
+
+.input-style{
+        border : none;
+        color: $color-green;
+        font-weight: bold;
 }
 
 

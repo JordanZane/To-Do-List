@@ -20,7 +20,7 @@ newListForm.addEventListener("submit", function(e){
         let listIcon = document.createElement("i")
         listIcon.classList.add("fa-solid", "fa-bars");
         let listName = document.createElement("input");
-        listName.classList.add("list-name");
+        listName.classList.add("list-name", "input-style");
         listName.value = newListName;
         listName.textContent = newListName.value;
         
