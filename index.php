@@ -11,39 +11,19 @@
     </header>
 
     <main>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <h3>Mes listes</h3>
-                    <form id="new-list-form">
-                        <div class="new-list-container">
-                            <input class="input-style" type="text" id="new-list-input" placeholder="Créer une liste">
-                            <input class="btn-style" type="submit" id="new-list-submit" value="+" title="Ajouter">
-                        </div>
-                    </form>
-                    <div id="lists-container">
-
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="row">
-                        <!--Add list name h3-->
+                <div class="col-lg-12">
+                    <!--Add list name h3-->
+                    <div id="tasks-container">
                         <h4>En cours</h4>
-                        <div id="tasks-container">
-
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="new-task-container">
-                            <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
-                            <input class="btn-style" type="submit" id="new-task-submit" value="+" title="Ajouter">
-                        </div>
+                    <div class="new-task-container">
+                        <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
+                        <input class="btn-style" type="submit" id="new-task-submit" value="+" title="Ajouter">
                     </div>
-                    <div class="row">
+                    <div class="completed-tasks-container">
                         <h4>Terminées</h4>
-                        <div class="completed-tasks">
-                            
-                        </div>
                     </div>
                 </div>
             </div>

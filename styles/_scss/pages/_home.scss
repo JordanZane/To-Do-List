@@ -1,40 +1,10 @@
 main{
-    .col-lg-3{
-        padding-left: 50px;
-        h3{
-            color: $color-green;
-        }
-        #new-list-form{
-            .new-list-container{
-                border-bottom: 1px solid $color-green;
-                padding-bottom: 20px;
-                margin-bottom: 20px;
-                input{
-                    &::placeholder{
-                        color: $color-green;
-                        font-weight: bold;
-                        font-size: 20px;
-                    }
-                }
-            }
-        }
-        #lists-container{
-            .list{
-                display: flex;
-                align-items: center;
-                margin-bottom: 30px;
-                i{
-                    color: $color-green;
-                    font-size: 22px;
-                    margin-right: 25px;
-                }
-                input{
-                    font-size: 16px;
-                }
-            }
-        }
-    }
-    .col-lg-9{
+    .col-lg-12{
         background-color: $color-green;
+        
+        .new-task-container{
+            display: flex;
+            align-items: center;
+        }
     }
 }
