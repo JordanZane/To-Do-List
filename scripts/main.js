@@ -20,8 +20,9 @@ function genererTasks(){
         iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
 
         tasksContainer.appendChild(newTaskContainer);
-        newTaskContainer.appendChild(newTaskInput);
         newTaskContainer.appendChild(iconDelete);
+        newTaskContainer.appendChild(newTaskInput);
+        
 
         tasksList.push(listTasks[i]);
     }
@@ -54,13 +55,17 @@ formAddTask.addEventListener("submit", function(e){
         iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
 
         tasksContainer.appendChild(newTaskContainer);
-        newTaskContainer.appendChild(newTaskInput);
         newTaskContainer.appendChild(iconDelete);
+        newTaskContainer.appendChild(newTaskInput);
+        
 
         tasksList.push(taskContent);
         window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
     }
 })
+
+// Listener to change text tasks
+
 
 // window.localStorage.removeItem("Tasks name");
 

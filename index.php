@@ -21,9 +21,8 @@
                     </div>
                     <div class="new-task-container-submit">
                         <form id="form-add-task" action="">
-                        <input class="btn-style" type="submit" id="new-task-submit" value="+" title="Ajouter">
+                            <input class="btn-style" type="submit" id="new-task-submit" value="+" title="Ajouter">
                             <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
-                            
                         </form>
                     </div>
                     <div class="completed-tasks-container">
