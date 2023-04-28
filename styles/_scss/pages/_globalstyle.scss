@@ -91,7 +91,6 @@ body {
         p {
                 font-family: $font1;
                 font-size: 14px;
-                font-size: 14px;
                 line-height: 20px;
                 margin: 10px 0;
                 a {
@@ -144,10 +143,15 @@ body {
 
 .input-style{
         border : none;
-        color: $color-green;
+        color: $color-green-text;
         font-weight: bold;
         width: 99%;
         padding-left: 15px;
+        font-size: 16px;
+        line-height: 24px;
+        &::placeholder{
+                color: $color-green-text;
+        }
 }
 
 
