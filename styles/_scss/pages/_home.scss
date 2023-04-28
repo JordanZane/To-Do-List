@@ -5,15 +5,35 @@ main{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 15px;
             margin-bottom: 25px;
             background-color: $color-white;
             i{
                 font-size: 16px;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
+                margin-right: 15px;
                 &:hover{
                     color: $color-green;
+                }
+            }
+        }
+        .new-task-container-submit{
+            #form-add-task{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: $color-white;
+                padding: 0 15px;
+                #new-task-submit {
+                    background: unset;
+                    border: unset;
+                    font-size: 30px;
+                    padding: 0;
+                    transition: all 0.6s ease-in-out;
+                    &:hover{
+                        color: $color-green;
+                        transform: rotate(180deg);
+                    }
                 }
             }
         }
