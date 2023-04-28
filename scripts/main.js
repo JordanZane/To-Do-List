@@ -17,7 +17,7 @@ function genererTasks(){
         newTaskInput.textContent = listTasks[i].value;
         
         let iconDelete = document.createElement("i");
-        iconDelete.classList.add("fa-solid", "fa-circle", "btn-style");
+        iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
 
         tasksContainer.appendChild(newTaskContainer);
         newTaskContainer.appendChild(newTaskInput);
@@ -51,7 +51,7 @@ formAddTask.addEventListener("submit", function(e){
         newTaskInput.textContent = taskContent.value;
         
         let iconDelete = document.createElement("i");
-        iconDelete.classList.add("fa-solid", "fa-circle", "btn-style");
+        iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
 
         tasksContainer.appendChild(newTaskContainer);
         newTaskContainer.appendChild(newTaskInput);
@@ -62,5 +62,5 @@ formAddTask.addEventListener("submit", function(e){
     }
 })
 
-//window.localStorage.removeItem("Tasks name");
+// window.localStorage.removeItem("Tasks name");
 

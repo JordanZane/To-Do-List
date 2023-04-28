@@ -1,10 +1,21 @@
 main{
     .col-lg-12{
         background-color: $color-green;
-        
         .new-task-container{
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            margin-bottom: 25px;
+            background-color: $color-white;
+            i{
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    color: $color-green;
+                }
+            }
         }
     }
 }

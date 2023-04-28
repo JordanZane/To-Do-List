@@ -18,7 +18,7 @@
                     <div id="tasks-container">
                         <h4>En cours</h4>
                     </div>
-                    <div class="new-task-container">
+                    <div class="new-task-container-submit">
                         <form id="form-add-task" action="">
                             <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
                             <input class="btn-style" type="submit" id="new-task-submit" value="+" title="Ajouter">
