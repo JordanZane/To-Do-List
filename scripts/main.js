@@ -84,12 +84,14 @@ formAddTask.addEventListener("submit", function(e){
         newTaskInput.value = taskContent;
         newTaskInput.textContent = taskContent.value;
         
-        
         let iconDelete = document.createElement("i");
         iconDelete.classList.add("fa-solid", "fa-trash", "btn-style");
 
         tasksContainer.appendChild(newTaskContainer);
         newTaskContainer.appendChild(newTaskInput);
         newTaskContainer.appendChild(iconDelete);
+
+        tasksList.push(taskContent);
+        window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
     }
 })
