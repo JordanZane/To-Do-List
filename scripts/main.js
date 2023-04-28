@@ -61,4 +61,35 @@ newListForm.addEventListener("submit", function(e){
 
 */
 
-       
+
+let inputNewTask = document.querySelector("#new-task-input");
+let tasksContainer = document.querySelector("#tasks-container");
+let formAddTask = document.querySelector("#form-add-task");
+
+let tasksList = [];
+
+//Listener add new task
+formAddTask.addEventListener("submit", function(e){
+    e.preventDefault();
+    let taskContent = inputNewTask.value;
+    if(!taskContent){
+        alert("Veuillez remplir le champs");
+    }else{
+        taskContent.value = "";
+        let newTaskContainer = document.createElement("div");
+        newTaskContainer.classList.add("new-task-container");
+        let newTaskInput = document.createElement("input");
+        newTaskInput.classList.add("input-style");
+        newTaskInput.type = "text";
+        newTaskInput.value = taskContent;
+        newTaskInput.textContent = taskContent.value;
+        
+        
+        let iconDelete = document.createElement("i");
+        iconDelete.classList.add("fa-solid", "fa-trash", "btn-style");
+
+        tasksContainer.appendChild(newTaskContainer);
+        newTaskContainer.appendChild(newTaskInput);
+        newTaskContainer.appendChild(iconDelete);
+    }
+})
