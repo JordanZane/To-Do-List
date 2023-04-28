@@ -68,6 +68,30 @@ let formAddTask = document.querySelector("#form-add-task");
 
 let tasksList = [];
 
+function genererTasks(){
+    const listTasksJson = window.localStorage.getItem("Tasks name");
+    const listTasks = JSON.parse(listTasksJson);
+
+    for(let i = 0; i < listTasks.length; i++){
+        let newTaskContainer = document.createElement("div");
+        newTaskContainer.classList.add("new-task-container");
+        let newTaskInput = document.createElement("input");
+        newTaskInput.classList.add("input-style");
+        newTaskInput.type = "text";
+        newTaskInput.value = listTasks[i];
+        newTaskInput.textContent = listTasks[i].value;
+        
+        let iconDelete = document.createElement("i");
+        iconDelete.classList.add("fa-solid", "fa-trash", "btn-style");
+
+        tasksContainer.appendChild(newTaskContainer);
+        newTaskContainer.appendChild(newTaskInput);
+        newTaskContainer.appendChild(iconDelete);
+
+        tasksList.push(listTasks);
+    }
+}
+
 //Listener add new task
 formAddTask.addEventListener("submit", function(e){
     e.preventDefault();
@@ -85,7 +109,7 @@ formAddTask.addEventListener("submit", function(e){
         newTaskInput.textContent = taskContent.value;
         
         let iconDelete = document.createElement("i");
-        iconDelete.classList.add("fa-solid", "fa-trash", "btn-style");
+        iconDelete.classList.add("fa-solid", "fa-circle", "btn-style");
 
         tasksContainer.appendChild(newTaskContainer);
         newTaskContainer.appendChild(newTaskInput);
@@ -95,3 +119,6 @@ formAddTask.addEventListener("submit", function(e){
         window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
     }
 })
+
+genererTasks();
+
