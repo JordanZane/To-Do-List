@@ -28,8 +28,8 @@ function genererTasks(){
 }
 
 //Generate the page
-const localStorageSet = (localStorage.getItem("Tasks name") !== null);
-if (localStorageSet){
+const listTasksJson = (localStorage.getItem("Tasks name") !== null);
+if (listTasksJson){
     genererTasks();
 }
 
