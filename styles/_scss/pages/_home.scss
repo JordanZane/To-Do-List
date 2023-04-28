@@ -1,12 +1,56 @@
 main{
     .col-lg-12{
         background-color: $color-green;
+        .new-task-container-submit {
+            margin-top: 25px;
+        }
+        .completed-tasks-container {
+            padding-bottom: 25px;
+            border-bottom: 1px solid $color-white;
+            margin-bottom: 15px;
+        }
+        #tasks-container {
+            padding-bottom: 25px;
+            border-bottom: 1px solid $color-white;
+            max-height: 600px;
+            overflow-x: scroll;
+
+            /*style scrollbar*/
+            /* width */
+            &::-webkit-scrollbar {
+                width: 10px;
+            }
+            
+            /* Track */
+            &::-webkit-scrollbar-track {
+                box-shadow: none; 
+            }
+            
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $color-orange; 
+                border-radius: 10px;
+            }
+            
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $color-orange-2; 
+            }
+            &::-webkit-scrollbar-corner{
+                background-color: none;
+            }
+        }
         .new-task-container{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 25px;
+            height: 45px;
+            margin-bottom: 5px;
             background-color: $color-white;
+            border-radius: 11px;
+            &:last-child{
+                margin-bottom: 0;
+            }
             i{
                 font-size: 16px;
                 cursor: pointer;
@@ -14,6 +58,7 @@ main{
                 margin-right: 15px;
                 &:hover{
                     color: $color-green-text;
+                    animation: sizeChanging 1s linear infinite;
                 }
             }
         }
@@ -23,16 +68,17 @@ main{
                 align-items: center;
                 justify-content: space-between;
                 background-color: $color-white;
-                padding-right: 15px;
+                padding-left: 15px;
+                border-radius: 11px;
                 #new-task-submit {
                     background: unset;
                     border: unset;
-                    font-size: 30px;
                     padding: 0;
+                    font-size: 30px;
                     transition: all 0.6s ease-in-out;
                     &:hover{
                         color: $color-green-text;
-                        transform: rotate(180deg);
+                        transform: rotate(180deg) scale(1.3);
                     }
                 }
             }

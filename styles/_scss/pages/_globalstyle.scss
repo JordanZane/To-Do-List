@@ -79,12 +79,11 @@ body {
                 font-size: 20px;
                 line-height: 24px;
                 font-weight: 700;
-                padding: 20px 0;
+                padding: 25px 0;
                 margin: 0;
+                color: $color-white;
                 @include respond-to('small') {
-
                         font-size: 14px;
-
                 }
         }
 
@@ -146,9 +145,10 @@ body {
         color: $color-green-text;
         font-weight: bold;
         width: 99%;
-        padding-left: 15px;
+        padding: 4px 0 0 15px;
         font-size: 16px;
-        line-height: 24px;
+        line-height: 1.5em;
+        border-radius: 11px;
         &::placeholder{
                 color: $color-green-text;
         }
