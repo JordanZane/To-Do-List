@@ -3,6 +3,7 @@ let tasksContainer = document.querySelector("#tasks-container");
 let formAddTask = document.querySelector("#form-add-task");
 
 let tasksList = [];
+let completedTasksList = [];
 let tasksID = 1;
 
 function genererTasks(){
@@ -30,11 +31,24 @@ function genererTasks(){
         
         tasksList.push(listTasks[i]);
 
+       
+
+        /*iconDelete.addEventListener("click", function(){
+            let completedTasksContainer = document.querySelector("#completed-tasks-container");
+            tasksContainer.removeChild(newTaskContainer);
+            completedTasksContainer.appendChild(newTaskContainer);
+            tasksList.splice(i,1);
+            window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+            
+        });*/
+
         newTaskInput.addEventListener("change", function () {
             updateTaskInLocalStorage(i, newTaskInput.value);
           });
     }
 }
+
+
 
 //Update the value of the task on change event
 function updateTaskInLocalStorage(index, newValue) {
@@ -43,6 +57,7 @@ function updateTaskInLocalStorage(index, newValue) {
   }
 
 //Generate the page
+
 const listTasksJson = (localStorage.getItem("Tasks name") !== null);
 if (listTasksJson){
     genererTasks();
@@ -87,5 +102,5 @@ formAddTask.addEventListener("submit", function(e){
 
 
 
-//window.localStorage.removeItem("Tasks name");
+// window.localStorage.removeItem("Tasks name");
 

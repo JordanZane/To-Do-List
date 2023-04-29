@@ -25,8 +25,9 @@
                             <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
                         </form>
                     </div>
-                    <div class="completed-tasks-container">
-                        <h4>Terminées</h4>
+                    <h4>Terminées</h4>
+                    <div id="completed-tasks-container">
+                        
                     </div>
                 </div>
             </div>

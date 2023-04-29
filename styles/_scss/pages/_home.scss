@@ -1,20 +1,7 @@
 main{
     .col-lg-12{
         background-color: $color-green;
-        .new-task-container-submit {
-            margin-top: 25px;
-        }
-        .completed-tasks-container {
-            padding-bottom: 25px;
-            border-bottom: 1px solid $color-white;
-            margin-bottom: 15px;
-        }
-        #tasks-container {
-            padding-bottom: 25px;
-            border-bottom: 1px solid $color-white;
-            max-height: 400px;
-            overflow-x: scroll;
-
+        #completed-tasks-container, #tasks-container{
             /*style scrollbar*/
             /* width */
             &::-webkit-scrollbar {
@@ -39,6 +26,29 @@ main{
             &::-webkit-scrollbar-corner{
                 background-color: none;
             }
+        } 
+        #completed-tasks-container{
+            padding-bottom: 25px;
+            max-height: 400px;
+            overflow-x: scroll;
+            .input-style{
+                text-decoration: line-through;
+            }
+        }
+        .new-task-container-submit {
+            margin-top: 25px;
+        }
+        .completed-tasks-container {
+            padding-bottom: 25px;
+            border-bottom: 1px solid $color-white;
+            margin-bottom: 15px;
+        }
+        #tasks-container {
+            padding-bottom: 25px;
+            border-bottom: 1px solid $color-white;
+            max-height: 400px;
+            overflow-x: scroll;
+
         }
         .new-task-container{
             display: flex;
