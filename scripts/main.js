@@ -3,15 +3,20 @@ let tasksContainer = document.querySelector("#tasks-container");
 let formAddTask = document.querySelector("#form-add-task");
 
 let tasksList = [];
+let tasksID = 1;
 
 function genererTasks(){
     const listTasksJson = window.localStorage.getItem("Tasks name");
     const listTasks = JSON.parse(listTasksJson);
+
     for(let i = 0; i < listTasks.length; i++){
+        
         let newTaskContainer = document.createElement("div");
         newTaskContainer.classList.add("new-task-container");
         let newTaskInput = document.createElement("input");
-        newTaskInput.classList.add("input-style");
+        newTaskInput.classList.add("input-style", "task-content");
+        newTaskInput.id = "task-" + tasksID;
+        tasksID = tasksID + 1;
         newTaskInput.type = "text";
         newTaskInput.value = listTasks[i];
         newTaskInput.textContent = listTasks[i].value;
@@ -23,17 +28,25 @@ function genererTasks(){
         newTaskContainer.appendChild(iconDelete);
         newTaskContainer.appendChild(newTaskInput);
         
-
         tasksList.push(listTasks[i]);
+
+        newTaskInput.addEventListener("change", function () {
+            updateTaskInLocalStorage(i, newTaskInput.value);
+          });
     }
 }
+
+//Update the value of the task on change event
+function updateTaskInLocalStorage(index, newValue) {
+    tasksList[index] = newValue;
+    window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+  }
 
 //Generate the page
 const listTasksJson = (localStorage.getItem("Tasks name") !== null);
 if (listTasksJson){
     genererTasks();
 }
-
 
 //Listener add new task
 formAddTask.addEventListener("submit", function(e){
@@ -42,11 +55,14 @@ formAddTask.addEventListener("submit", function(e){
     if(!taskContent){
         alert("Veuillez remplir le champs");
     }else{
+        
         inputNewTask.value = "";
         let newTaskContainer = document.createElement("div");
         newTaskContainer.classList.add("new-task-container");
         let newTaskInput = document.createElement("input");
-        newTaskInput.classList.add("input-style");
+        newTaskInput.classList.add("input-style" , "task-content");
+        newTaskInput.id = "task-" + tasksID;
+        tasksID = tasksID + 1;
         newTaskInput.type = "text";
         newTaskInput.value = taskContent;
         newTaskInput.textContent = taskContent.value;
@@ -61,11 +77,15 @@ formAddTask.addEventListener("submit", function(e){
 
         tasksList.push(taskContent);
         window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+
+        newTaskInput.addEventListener("change", function () {
+            updateTaskInLocalStorage(tasksList.length - 1, newTaskInput.value);
+          });
     }
 })
 
-// Listener to change text tasks
 
 
-// window.localStorage.removeItem("Tasks name");
+
+//window.localStorage.removeItem("Tasks name");
 
