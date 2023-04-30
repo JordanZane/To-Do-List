@@ -1,5 +1,6 @@
 let inputNewTask = document.querySelector("#new-task-input");
 let tasksContainer = document.querySelector("#tasks-container");
+let tasksCompletedContainer = document.querySelector("#completed-tasks-container");
 let formAddTask = document.querySelector("#form-add-task");
 
 let tasksList = [];
@@ -9,7 +10,7 @@ let tasksID = 1;
 function genererTasks(){
     const listTasksJson = window.localStorage.getItem("Tasks name");
     const listTasks = JSON.parse(listTasksJson);
-
+    
     for(let i = 0; i < listTasks.length; i++){
         
         let newTaskContainer = document.createElement("div");
@@ -31,24 +32,22 @@ function genererTasks(){
         
         tasksList.push(listTasks[i]);
 
-       
-
-        /*iconDelete.addEventListener("click", function(){
-            let completedTasksContainer = document.querySelector("#completed-tasks-container");
-            tasksContainer.removeChild(newTaskContainer);
-            completedTasksContainer.appendChild(newTaskContainer);
-            tasksList.splice(i,1);
-            window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+        iconDelete.addEventListener("click", function(){
             
-        });*/
+            tasksContainer.removeChild(newTaskContainer);
+            tasksCompletedContainer.appendChild(newTaskContainer);
+            completedTasksList.push(listTasks[i]);   
+
+            tasksList.splice(i,1);
+            window.localStorage.setItem("Completed tasks", JSON.stringify(completedTasksList));
+
+        });
 
         newTaskInput.addEventListener("change", function () {
             updateTaskInLocalStorage(i, newTaskInput.value);
           });
     }
 }
-
-
 
 //Update the value of the task on change event
 function updateTaskInLocalStorage(index, newValue) {
@@ -57,7 +56,6 @@ function updateTaskInLocalStorage(index, newValue) {
   }
 
 //Generate the page
-
 const listTasksJson = (localStorage.getItem("Tasks name") !== null);
 if (listTasksJson){
     genererTasks();
@@ -70,7 +68,6 @@ formAddTask.addEventListener("submit", function(e){
     if(!taskContent){
         alert("Veuillez remplir le champs");
     }else{
-        
         inputNewTask.value = "";
         let newTaskContainer = document.createElement("div");
         newTaskContainer.classList.add("new-task-container");
@@ -89,7 +86,6 @@ formAddTask.addEventListener("submit", function(e){
         newTaskContainer.appendChild(iconDelete);
         newTaskContainer.appendChild(newTaskInput);
         
-
         tasksList.push(taskContent);
         window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
 
@@ -100,7 +96,6 @@ formAddTask.addEventListener("submit", function(e){
 })
 
 
-
-
-// window.localStorage.removeItem("Tasks name");
+//window.localStorage.removeItem("Completed tasks");
+//window.localStorage.removeItem("Tasks name");
 
