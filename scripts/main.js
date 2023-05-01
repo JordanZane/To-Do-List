@@ -99,7 +99,6 @@ formAddTask.addEventListener("submit", function(e){
         let newTaskInput = document.createElement("input");
         newTaskInput.classList.add("input-style" , "task-content");
         newTaskInput.id = "task-" + tasksID;
-        tasksID = tasksID + 1;
         newTaskInput.type = "text";
         newTaskInput.value = taskContent;
         
