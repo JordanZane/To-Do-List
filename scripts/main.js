@@ -5,54 +5,80 @@ let formAddTask = document.querySelector("#form-add-task");
 
 let tasksList = [];
 let completedTasksList = [];
-let tasksID = 1;
+let tasksID = Date.now();
 
-function genererTasks(){
-    const listTasksJson = window.localStorage.getItem("Tasks name");
-    const listTasks = JSON.parse(listTasksJson);
-    
-    for(let i = 0; i < listTasks.length; i++){
-        
+function genererTasks() {
+  const listTasksJson = localStorage.getItem("Tasks name");
+  const listTasks = JSON.parse(listTasksJson);
+
+if(listTasks) {
+    for (let i = 0; i < listTasks.length; i++) {
         let newTaskContainer = document.createElement("div");
         newTaskContainer.classList.add("new-task-container");
         let newTaskInput = document.createElement("input");
         newTaskInput.classList.add("input-style", "task-content");
-        newTaskInput.id = "task-" + tasksID;
-        tasksID = tasksID + 1;
+        newTaskInput.id = `task-${i}`;
         newTaskInput.type = "text";
         newTaskInput.value = listTasks[i];
         newTaskInput.textContent = listTasks[i].value;
-        
+    
         let iconDelete = document.createElement("i");
         iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
-
+    
         tasksContainer.appendChild(newTaskContainer);
         newTaskContainer.appendChild(iconDelete);
         newTaskContainer.appendChild(newTaskInput);
-        
+    
         tasksList.push(listTasks[i]);
-
-        iconDelete.addEventListener("click", function(){
-            
+    
+        iconDelete.addEventListener("click", function () {
+            let taskIndex = Array.from(tasksContainer.children).indexOf(newTaskContainer);
             tasksContainer.removeChild(newTaskContainer);
             tasksCompletedContainer.appendChild(newTaskContainer);
-            completedTasksList.push(listTasks[i]);   
-
-            tasksList.splice(i,1);
-            window.localStorage.setItem("Completed tasks", JSON.stringify(completedTasksList));
-
-        });
-
-        newTaskInput.addEventListener("change", function () {
-            updateTaskInLocalStorage(i, newTaskInput.value);
+          
+            let deletedTask = tasksList.splice(taskIndex, 1)[0];
+            completedTasksList.push(deletedTask);
+          
+            window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+            window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
           });
-    }
+    
+        newTaskInput.addEventListener("change", () => handleChange(i));
+      }
+} 
 }
 
-//Update the value of the task on change event
-function updateTaskInLocalStorage(index, newValue) {
-    tasksList[index] = newValue;
+function handleChange(index) {
+    const newTaskContent = document.getElementById(`task-${index}`).value;
+    tasksList[index] = newTaskContent;
     window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+}
+
+function updateTaskIndex(oldIndex, newIndex) {
+    // update the tasksList array to reflect the new index
+    const task = tasksList.splice(oldIndex, 1)[0];
+    tasksList.splice(newIndex, 0, task);
+  
+    // remove the old task from the completedTasksList array
+    const completedTask = completedTasksList.splice(oldIndex, 1)[0];
+  
+    // insert the completed task into its new index in the completedTasksList array
+    completedTasksList.splice(newIndex, 0, completedTask);
+  
+    // remove the old event listener
+    const oldInput = document.getElementById(`task-${oldIndex}`);
+    oldInput.removeEventListener('change', () => handleChange(oldIndex));
+  
+    // update the input element with the new index
+    const newInput = document.getElementById(`task-${newIndex}`);
+    newInput.id = `task-${newIndex}`;
+  
+    // add a new event listener with the updated index
+    newInput.addEventListener('change', () => handleChange(newIndex));
+  
+    // update the localStorage for both arrays
+    window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+    window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
   }
 
 //Generate the page
@@ -61,7 +87,6 @@ if (listTasksJson){
     genererTasks();
 }
 
-//Listener add new task
 formAddTask.addEventListener("submit", function(e){
     e.preventDefault();
     let taskContent = inputNewTask.value;
@@ -77,7 +102,6 @@ formAddTask.addEventListener("submit", function(e){
         tasksID = tasksID + 1;
         newTaskInput.type = "text";
         newTaskInput.value = taskContent;
-        newTaskInput.textContent = taskContent.value;
         
         let iconDelete = document.createElement("i");
         iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
@@ -89,13 +113,20 @@ formAddTask.addEventListener("submit", function(e){
         tasksList.push(taskContent);
         window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
 
-        newTaskInput.addEventListener("change", function () {
-            updateTaskInLocalStorage(tasksList.length - 1, newTaskInput.value);
+        iconDelete.addEventListener("click", function () {
+            let taskIndex = Array.from(tasksContainer.children).indexOf(newTaskContainer);
+            tasksContainer.removeChild(newTaskContainer);
+            tasksCompletedContainer.appendChild(newTaskContainer);
+          
+            let deletedTask = tasksList.splice(taskIndex, 1)[0];
+            completedTasksList.push(deletedTask);
+          
+            window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+            window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
           });
+
+        newTaskInput.addEventListener("change", function () {
+            handleChange(tasksList.length - 1);
+        });
     }
 })
-
-
-//window.localStorage.removeItem("Completed tasks");
-//window.localStorage.removeItem("Tasks name");
-
