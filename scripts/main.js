@@ -7,79 +7,93 @@ let tasksList = [];
 let completedTasksList = [];
 let tasksID = Date.now();
 
+
+
+
+
 function genererTasks() {
   const listTasksJson = localStorage.getItem("Tasks name");
   const listTasks = JSON.parse(listTasksJson);
 
-if(listTasks) {
-    for (let i = 0; i < listTasks.length; i++) {
-        let newTaskContainer = document.createElement("div");
-        newTaskContainer.classList.add("new-task-container");
-        let newTaskInput = document.createElement("input");
-        newTaskInput.classList.add("input-style", "task-content");
-        newTaskInput.id = `task-${i}`;
-        newTaskInput.type = "text";
-        newTaskInput.value = listTasks[i];
-        newTaskInput.textContent = listTasks[i].value;
-    
-        let iconDelete = document.createElement("i");
-        iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
-    
-        tasksContainer.appendChild(newTaskContainer);
-        newTaskContainer.appendChild(iconDelete);
-        newTaskContainer.appendChild(newTaskInput);
-    
-        tasksList.push(listTasks[i]);
-    
-        iconDelete.addEventListener("click", function () {
-            let taskIndex = Array.from(tasksContainer.children).indexOf(newTaskContainer);
-            tasksContainer.removeChild(newTaskContainer);
-            tasksCompletedContainer.appendChild(newTaskContainer);
-          
-            let deletedTask = tasksList.splice(taskIndex, 1)[0];
-            completedTasksList.push(deletedTask);
-          
-            window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
-            window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
-          });
-    
-        newTaskInput.addEventListener("change", () => handleChange(i));
-      }
-} 
+  if(listTasks) {
+      for (let i = 0; i < listTasks.length; i++) {
+       
+          let newTaskContainer = document.createElement("div");
+          newTaskContainer.classList.add("new-task-container");
+          let newTaskInput = document.createElement("input");
+          newTaskInput.classList.add("input-style", "task-content");
+          newTaskInput.id = `task-${i}`;
+          newTaskInput.type = "text";
+          newTaskInput.value = listTasks[i];
+          newTaskInput.textContent = listTasks[i].value;
+      
+          let iconDelete = document.createElement("i");
+          iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
+      
+          tasksContainer.appendChild(newTaskContainer);
+          newTaskContainer.appendChild(iconDelete);
+          newTaskContainer.appendChild(newTaskInput);
+      
+          tasksList.push(listTasks[i]);
+      
+          iconDelete.addEventListener("click", function (e) {
+              let taskIndex = Array.from(tasksContainer.children).indexOf(newTaskContainer);
+              tasksContainer.removeChild(newTaskContainer);
+
+              deleteTask(e);
+              
+              let deletedTask = tasksList.splice(taskIndex, 1)[0];
+              completedTasksList.push(deletedTask);
+            
+              window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+              window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
+            });
+      
+          newTaskInput.addEventListener("change", () => handleChange(i));
+        }
+  } 
+  const completedTasksJson = localStorage.getItem("Completed tasks name");
+  const completedTasks = JSON.parse(completedTasksJson);
+
+  if (completedTasks) {
+    for (let i = 0; i < completedTasks.length; i++) {
+      // create new input element for completed task
+      let newTaskInput = document.createElement("input");
+      newTaskInput.classList.add("input-style", "task-content");
+      newTaskInput.id = `completed-task-${i}`;
+      newTaskInput.type = "text";
+      newTaskInput.value = completedTasks[i];
+      newTaskInput.readOnly = true; // make the input read-only
+
+      // create the definitive delete button
+      let deleteDefButton = document.createElement("i");
+      deleteDefButton.classList.add("fa-solid", "fa-x");
+      
+      // create a new div element for the input element
+      let newTaskContainer = document.createElement("div");
+      newTaskContainer.classList.add("new-task-container");
+      
+      // append input element to the new div element
+      newTaskContainer.appendChild(deleteDefButton);
+      newTaskContainer.appendChild(newTaskInput);
+      
+      // append new div element to #completed-tasks-container
+      tasksCompletedContainer.appendChild(newTaskContainer);
+      
+      
+      completedTasksList.push(completedTasks[i]);
+    }
+  }
 }
 
 function handleChange(index) {
-    const newTaskContent = document.getElementById(`task-${index}`).value;
-    tasksList[index] = newTaskContent;
-    window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
-}
-
-function updateTaskIndex(oldIndex, newIndex) {
-    // update the tasksList array to reflect the new index
-    const task = tasksList.splice(oldIndex, 1)[0];
-    tasksList.splice(newIndex, 0, task);
-  
-    // remove the old task from the completedTasksList array
-    const completedTask = completedTasksList.splice(oldIndex, 1)[0];
-  
-    // insert the completed task into its new index in the completedTasksList array
-    completedTasksList.splice(newIndex, 0, completedTask);
-  
-    // remove the old event listener
-    const oldInput = document.getElementById(`task-${oldIndex}`);
-    oldInput.removeEventListener('change', () => handleChange(oldIndex));
-  
-    // update the input element with the new index
-    const newInput = document.getElementById(`task-${newIndex}`);
-    newInput.id = `task-${newIndex}`;
-  
-    // add a new event listener with the updated index
-    newInput.addEventListener('change', () => handleChange(newIndex));
-  
-    // update the localStorage for both arrays
-    window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
-    window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
+  const newTaskInput = document.getElementById(`task-${index}`);
+  if (newTaskInput) {
+      const newTaskContent = newTaskInput.value;
+      tasksList[index] = newTaskContent;
+      window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
   }
+}
 
 //Generate the page
 const listTasksJson = (localStorage.getItem("Tasks name") !== null);
@@ -87,45 +101,87 @@ if (listTasksJson){
     genererTasks();
 }
 
-formAddTask.addEventListener("submit", function(e){
-    e.preventDefault();
-    let taskContent = inputNewTask.value;
-    if(!taskContent){
-        alert("Veuillez remplir le champs");
-    }else{
-        inputNewTask.value = "";
-        let newTaskContainer = document.createElement("div");
-        newTaskContainer.classList.add("new-task-container");
-        let newTaskInput = document.createElement("input");
-        newTaskInput.classList.add("input-style" , "task-content");
-        newTaskInput.id = "task-" + tasksID;
-        newTaskInput.type = "text";
-        newTaskInput.value = taskContent;
-        
-        let iconDelete = document.createElement("i");
-        iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
+formAddTask.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let taskContent = inputNewTask.value;
+  if (!taskContent) {
+    alert("Veuillez remplir le champs");
+  } else {
+    inputNewTask.value = "";
+    let newTaskContainer = document.createElement("div");
+    newTaskContainer.classList.add("new-task-container");
+    let newTaskInput = document.createElement("input");
+    newTaskInput.classList.add("input-style", "task-content");
+    newTaskInput.id = "task-" + tasksID;
+    newTaskInput.type = "text";
+    newTaskInput.value = taskContent;
 
-        tasksContainer.appendChild(newTaskContainer);
-        newTaskContainer.appendChild(iconDelete);
-        newTaskContainer.appendChild(newTaskInput);
-        
-        tasksList.push(taskContent);
-        window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+    let iconDelete = document.createElement("i");
+    iconDelete.classList.add("fa-regular", "fa-circle", "btn-style");
 
-        iconDelete.addEventListener("click", function () {
-            let taskIndex = Array.from(tasksContainer.children).indexOf(newTaskContainer);
-            tasksContainer.removeChild(newTaskContainer);
-            tasksCompletedContainer.appendChild(newTaskContainer);
-          
-            let deletedTask = tasksList.splice(taskIndex, 1)[0];
-            completedTasksList.push(deletedTask);
-          
-            window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
-            window.localStorage.setItem("Completed tasks name", JSON.stringify(completedTasksList));
-          });
+    tasksContainer.appendChild(newTaskContainer);
+    newTaskContainer.appendChild(iconDelete);
+    newTaskContainer.appendChild(newTaskInput);
 
-        newTaskInput.addEventListener("change", function () {
-            handleChange(tasksList.length - 1);
-        });
-    }
+    tasksList.push(taskContent);
+    window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+
+    iconDelete.addEventListener("click", function (e) {
+      let taskIndex = Array.from(tasksContainer.children).indexOf(
+        newTaskContainer
+      );
+      tasksContainer.removeChild(newTaskContainer);
+      deleteTask(e);
+      let deletedTask = tasksList.splice(taskIndex, 1)[0];
+      completedTasksList.push(deletedTask);
+
+      window.localStorage.setItem("Tasks name",JSON.stringify(tasksList));
+      window.localStorage.setItem("Completed tasks name",JSON.stringify(completedTasksList));
+    });
+
+    newTaskInput.addEventListener("change", function () {
+      const index = tasksList.indexOf(taskContent);
+      const newTaskContent = newTaskInput.value;
+      tasksList[index] = newTaskContent;
+      window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
+    });
+  }
+});
+
+
+function deleteTask(e) {
+  const task = e.target.parentNode;
+  const taskName = task.querySelector(".task-content").value;
+
+  task.remove();
+
+  const completedTask = document.createElement("div");
+  completedTask.classList.add("new-task-container");
+  tasksCompletedContainer.appendChild(completedTask);
+
+  /*
+  let deleteDefButton = document.createElement("i");
+  deleteDefButton.classList.add("fa-solid", "fa-x");
+
+  completedTask.appendChild(deleteDefButton);
+  */
+
+  let newTaskCompletedInput = document.createElement("input");
+  newTaskCompletedInput.classList.add("input-style", "task-content");
+  newTaskCompletedInput.id = "task-" + tasksID;
+  newTaskCompletedInput.type = "text";
+  newTaskCompletedInput.innerText = taskName;
+  newTaskCompletedInput.value = taskName;
+  completedTask.appendChild(newTaskCompletedInput);
+
+}
+
+let deleteDefAllCompletedTasks = document.querySelector("#deleteDefBtn");
+deleteDefAllCompletedTasks.addEventListener("click", function(){
+  completedTasksList = [];
+  tasksCompletedContainer.removeChild(completedTask);
+  localStorage.removeItem("Completed tasks name");
 })
+
+
+// localStorage.removeItem("Completed tasks name");

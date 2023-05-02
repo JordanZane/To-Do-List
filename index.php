@@ -25,7 +25,12 @@
                             <input class="input-style" type="text" id="new-task-input" placeholder="Ajouter une tâche">
                         </form>
                     </div>
-                    <h4>Terminées</h4>
+                    <div class="header-completed-tasks">
+                        <h4>Terminées</h4>
+                        <button id="deleteDefBtn" title="Effacer toutes les tâches">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </div>
                     <div id="completed-tasks-container">
                         
                     </div>
