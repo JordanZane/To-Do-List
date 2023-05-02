@@ -7,10 +7,6 @@ let tasksList = [];
 let completedTasksList = [];
 let tasksID = Date.now();
 
-
-
-
-
 function genererTasks() {
   const listTasksJson = localStorage.getItem("Tasks name");
   const listTasks = JSON.parse(listTasksJson);
@@ -59,7 +55,7 @@ function genererTasks() {
     for (let i = 0; i < completedTasks.length; i++) {
       // create new input element for completed task
       let newTaskInput = document.createElement("input");
-      newTaskInput.classList.add("input-style", "task-content");
+      newTaskInput.classList.add("input-style", "task-content", "completed-task");
       newTaskInput.id = `completed-task-${i}`;
       newTaskInput.type = "text";
       newTaskInput.value = completedTasks[i];
@@ -67,7 +63,7 @@ function genererTasks() {
 
       // create the definitive delete button
       let deleteDefButton = document.createElement("i");
-      deleteDefButton.classList.add("fa-solid", "fa-x");
+     
       
       // create a new div element for the input element
       let newTaskContainer = document.createElement("div");
@@ -159,15 +155,8 @@ function deleteTask(e) {
   completedTask.classList.add("new-task-container");
   tasksCompletedContainer.appendChild(completedTask);
 
-  /*
-  let deleteDefButton = document.createElement("i");
-  deleteDefButton.classList.add("fa-solid", "fa-x");
-
-  completedTask.appendChild(deleteDefButton);
-  */
-
   let newTaskCompletedInput = document.createElement("input");
-  newTaskCompletedInput.classList.add("input-style", "task-content");
+  newTaskCompletedInput.classList.add("input-style", "task-content", "completed-task");
   newTaskCompletedInput.id = "task-" + tasksID;
   newTaskCompletedInput.type = "text";
   newTaskCompletedInput.innerText = taskName;
@@ -177,11 +166,17 @@ function deleteTask(e) {
 }
 
 let deleteDefAllCompletedTasks = document.querySelector("#deleteDefBtn");
-deleteDefAllCompletedTasks.addEventListener("click", function(){
-  completedTasksList = [];
-  tasksCompletedContainer.removeChild(completedTask);
+
+deleteDefAllCompletedTasks.addEventListener("click", function() {
+  let completedTasksContainer = document.querySelector("#completed-tasks-container");
+  let completedTasks = completedTasksContainer.querySelectorAll("#completed-tasks-container > .new-task-container");
+
+  completedTasks.forEach(function(completedTask) {
+    completedTasksContainer.removeChild(completedTask);
+  });
+
   localStorage.removeItem("Completed tasks name");
-})
+});
 
 
 // localStorage.removeItem("Completed tasks name");
