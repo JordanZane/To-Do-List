@@ -1,3 +1,6 @@
+
+
+
 let inputNewTask = document.querySelector("#new-task-input");
 let tasksContainer = document.querySelector("#tasks-container");
 let tasksCompletedContainer = document.querySelector("#completed-tasks-container");
@@ -6,6 +9,9 @@ let formAddTask = document.querySelector("#form-add-task");
 let tasksList = [];
 let completedTasksList = [];
 let tasksID = Date.now();
+
+
+
 
 function genererTasks() {
   const listTasksJson = localStorage.getItem("Tasks name");
@@ -61,8 +67,7 @@ function genererTasks() {
       newTaskInput.value = completedTasks[i];
       newTaskInput.readOnly = true; // make the input read-only
 
-      // create the definitive delete button
-      let deleteDefButton = document.createElement("i");
+     
      
       
       // create a new div element for the input element
@@ -70,7 +75,7 @@ function genererTasks() {
       newTaskContainer.classList.add("new-task-container");
       
       // append input element to the new div element
-      newTaskContainer.appendChild(deleteDefButton);
+      
       newTaskContainer.appendChild(newTaskInput);
       
       // append new div element to #completed-tasks-container
@@ -178,5 +183,3 @@ deleteDefAllCompletedTasks.addEventListener("click", function() {
   localStorage.removeItem("Completed tasks name");
 });
 
-
-// localStorage.removeItem("Completed tasks name");
