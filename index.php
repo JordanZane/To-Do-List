@@ -28,7 +28,8 @@
                     <div class="header-completed-tasks">
                         <h4>Terminées</h4>
                         <button id="deleteDefBtn" title="Effacer toutes les tâches">
-                            <i class="fa-solid fa-x"></i>
+                            <p>Effacer les tâches terminées</p>
+                            
                         </button>
                     </div>
                     <div id="completed-tasks-container">

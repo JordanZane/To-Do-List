@@ -100,14 +100,24 @@ main{
             justify-content: space-between;
             align-items: center;
             #deleteDefBtn{
-                padding-top: 4px;
-                i{
-                    transition: all 0.3s ease-in-out;
-                    &:hover{
-                        transform: scale(1.2);
-                        color: $color-green;
+                font-weight: bold;
+                margin: 0;
+                padding: 8px 15px;
+                @include transition(0.5s);
+                background: linear-gradient(to right, $color-orange 50%, $color-white 50%);
+                background-position: right bottom;
+                background-size: 200% 100%;
+                border: 1px solid $color-white;
+                &:hover{
+                    background-position: left bottom;
+                    p{
+                        color: $color-white;
                     }
                 }
+                p{
+                    margin: 0;
+                    @include transition(0.5s);
+                }             
             }
         }
     }
