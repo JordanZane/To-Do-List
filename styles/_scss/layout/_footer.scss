@@ -2,13 +2,27 @@ footer{
   background-color: $color-green;
   margin-top: 150px;
   min-height: 150px;
+  position: relative;
+  @include respond-to("small"){
+    display: flex;
+    align-items: center;
+}
+
+  .image-container{
+    position: absolute;
+    top: -130px;
+    left: 50px;
+  }
   .author{
     text-align: center;
     p, a{
         color: $color-white;
     }
     p{
-        line-height: 150px
+        line-height: 150px;
+        @include respond-to("small"){
+            line-height: unset;
+        }
     }
     a{
         @include transition(0.3s);

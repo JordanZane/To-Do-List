@@ -29,7 +29,7 @@
                         <h4>Terminées</h4>
                         <button id="deleteDefBtn" title="Effacer toutes les tâches">
                             <p>Effacer les tâches terminées</p>
-                            
+                            <i class="fa-sharp fa-regular fa-trash-can"></i>
                         </button>
                     </div>
                     <div id="completed-tasks-container">
@@ -40,6 +40,9 @@
         </div>
     </main>
     <footer>
+        <div class="image-container">
+            <img src="/images/duck-footer.svg">
+        </div>
         <?php include 'layout/footer.phtml'; ?>
     </footer>
 
