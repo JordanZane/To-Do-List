@@ -1,3 +1,6 @@
+//localStorage.removeItem("Tasks name");
+//localStorage.removeItem("Completed tasks name");
+
 let inputNewTask = document.querySelector("#new-task-input");
 let tasksContainer = document.querySelector("#tasks-container");
 let tasksCompletedContainer = document.querySelector("#completed-tasks-container");
@@ -8,6 +11,7 @@ let completedTasksList = [];
 let tasksID = Date.now();
 
 function genererTasks() {
+
   const listTasksJson = localStorage.getItem("Tasks name");
   const listTasks = JSON.parse(listTasksJson);
 
@@ -48,6 +52,7 @@ function genererTasks() {
           newTaskInput.addEventListener("change", () => handleChange(i));
         }
   } 
+
   const completedTasksJson = localStorage.getItem("Completed tasks name");
   const completedTasks = JSON.parse(completedTasksJson);
 
@@ -95,9 +100,11 @@ if (listTasksJson){
 formAddTask.addEventListener("submit", function (e) {
   e.preventDefault();
   let taskContent = inputNewTask.value;
+
   if (!taskContent) {
     alert("Veuillez remplir le champs");
   } else {
+
     inputNewTask.value = "";
     let newTaskContainer = document.createElement("div");
     newTaskContainer.classList.add("new-task-container");
@@ -118,11 +125,11 @@ formAddTask.addEventListener("submit", function (e) {
     window.localStorage.setItem("Tasks name", JSON.stringify(tasksList));
 
     iconDelete.addEventListener("click", function (e) {
-      let taskIndex = Array.from(tasksContainer.children).indexOf(
-        newTaskContainer
-      );
+      let taskIndex = Array.from(tasksContainer.children).indexOf(newTaskContainer);
       tasksContainer.removeChild(newTaskContainer);
+
       deleteTask(e);
+      
       let deletedTask = tasksList.splice(taskIndex, 1)[0];
       completedTasksList.push(deletedTask);
 
@@ -170,5 +177,8 @@ deleteDefAllCompletedTasks.addEventListener("click", function() {
   });
 
   localStorage.removeItem("Completed tasks name");
+  completedTasksList = [];
 });
+
+
 
