@@ -160,6 +160,7 @@ function deleteTask(e) {
   newTaskCompletedInput.classList.add("input-style", "task-content", "completed-task");
   newTaskCompletedInput.id = "task-" + tasksID;
   newTaskCompletedInput.type = "text";
+  newTaskCompletedInput.readOnly = true;
   newTaskCompletedInput.innerText = taskName;
   newTaskCompletedInput.value = taskName;
   completedTask.appendChild(newTaskCompletedInput);
